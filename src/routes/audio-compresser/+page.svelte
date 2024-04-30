@@ -1,7 +1,9 @@
 <script>
 	let fileSelected = false;
 	let loading = false;
+	let isCompressed = false;
 	let level = 'low';
+	let audioUrl = '';
 
 	const handleFileChange = (event) => {
 		fileSelected = event.target.files.length > 0;
@@ -27,18 +29,24 @@
 
 			if (response.ok) {
 				const responseData = await response.json();
-				console.log(responseData.message);
-				console.log(responseData.audio);
+				audioUrl = responseData.audio.url;
+				isCompressed = true;
 			} else {
-				const responseData = await response.json();
-				console.log(responseData.message);
-				console.log(responseData.error);
+				// const responseData = await response.json();
+				isCompressed = false;
 			}
 		} catch (error) {
+			isCompressed = false;
 			console.error(error);
 		} finally {
 			loading = false;
 		}
+	};
+
+	const handleReloadPage = () => {
+		const fileInput = document.querySelector('input[type="file"]');
+		fileInput.value = '';
+		location.reload();
 	};
 </script>
 
@@ -93,16 +101,29 @@
 	</div>
 
 	<div class="p-4">
-		{#if fileSelected}
-			{#if loading}
-				<button class="btn btn-wide btn-disabled">
-					<span class="loading loading-spinner loading-md"></span> Processing
-				</button>
+		{#if !isCompressed}
+			{#if fileSelected}
+				{#if loading}
+					<button class="btn btn-wide btn-disabled">
+						<span class="loading loading-spinner loading-md"></span> Processing
+					</button>
+				{:else}
+					<button class="btn btn-wide btn-primary" on:click={handleCompress}>Compress</button>
+				{/if}
 			{:else}
-				<button class="btn btn-wide btn-primary" on:click={handleCompress}>Compress</button>
+				<button class="btn btn-wide btn-disabled">Compress</button>
 			{/if}
 		{:else}
-			<button class="btn btn-wide btn-disabled">Compress</button>
+			<div class="p-2">
+				<a href={audioUrl} download>
+					<button class="btn btn-wide btn-success">Download</button>
+				</a>
+			</div>
+			<div class="p-2">
+				<button class="btn btn-wide btn-primary" on:click={handleReloadPage}>
+					Compress another audio
+				</button>
+			</div>
 		{/if}
 	</div>
 </div>

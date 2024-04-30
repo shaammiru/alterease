@@ -46,6 +46,8 @@
 	};
 
 	const handleReloadPage = () => {
+		const fileInput = document.querySelector('input[type="file"]');
+		fileInput.value = '';
 		location.reload();
 	};
 </script>
@@ -121,8 +123,8 @@
 				</a>
 			</div>
 			<div class="p-2">
-				<button class="btn btn-wide btn-primary" on:click={() => location.reload()}>
-					Resize again
+				<button class="btn btn-wide btn-primary" on:click={handleReloadPage}>
+					Resize another image
 				</button>
 			</div>
 		{/if}
