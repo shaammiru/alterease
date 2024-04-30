@@ -22,8 +22,8 @@
 				</svg>
 			</div>
 			<ul class="menu menu-md dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-				<li><a href="/image">Image Resizer</a></li>
-				<li><a href="/audio">Audio Compresser</a></li>
+				<li><a href="/image-resizer">Image Resizer</a></li>
+				<li><a href="/audio-compresser">Audio Compresser</a></li>
 			</ul>
 		</div>
 	</div>
