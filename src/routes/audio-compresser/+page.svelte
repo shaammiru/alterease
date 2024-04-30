@@ -95,7 +95,7 @@
 	<div class="p-4">
 		{#if fileSelected}
 			{#if loading}
-				<button class="btn btn-wide btn-disabled" on:click={handleCompress}>
+				<button class="btn btn-wide btn-disabled">
 					<span class="loading loading-spinner loading-md"></span> Processing
 				</button>
 			{:else}
