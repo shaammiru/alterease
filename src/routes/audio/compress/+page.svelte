@@ -1,8 +1,11 @@
 <script>
+	import { PUBLIC_API_URL } from '$env/static/public';
+
 	let fileSelected = false;
 	let loading = false;
+	let isError = false;
 	let isCompressed = false;
-	let level = 'low';
+	let level = '';
 	let audioUrl = '';
 
 	const handleFileChange = (event) => {
@@ -22,7 +25,7 @@
 		loading = true;
 
 		try {
-			const response = await fetch('http://localhost:3000/audio/compress', {
+			const response = await fetch(`${PUBLIC_API_URL}/audio/compress`, {
 				method: 'POST',
 				body: formData
 			});
@@ -32,10 +35,11 @@
 				audioUrl = responseData.audio.url;
 				isCompressed = true;
 			} else {
-				// const responseData = await response.json();
+				isError = true;
 				isCompressed = false;
 			}
 		} catch (error) {
+			isError = true;
 			isCompressed = false;
 			console.error(error);
 		} finally {
@@ -50,11 +54,11 @@
 	};
 </script>
 
-<svelte:head><title>Alterease | Audio</title></svelte:head>
+<svelte:head><title>Alterease | Audio Compress</title></svelte:head>
 
 <div class="min-h-screen justify-center text-center">
 	<div class="m-10">
-		<h1 class="font-bold text-xl">Audio Compresser</h1>
+		<h1 class="font-bold text-xl">Audio Compress</h1>
 	</div>
 
 	<div class="p-4">
@@ -126,4 +130,10 @@
 			</div>
 		{/if}
 	</div>
+
+	{#if isError}
+		<div class="p-4">
+			<h2 class="text-md mb-4 text-error">An error occurred, please try again!</h2>
+		</div>
+	{/if}
 </div>

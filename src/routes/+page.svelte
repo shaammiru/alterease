@@ -6,8 +6,8 @@
 			<h1 class="text-5xl font-bold">Alterease</h1>
 			<p class="py-6">Simple web for resizing image and comressing audio.</p>
 			<div class="space-x-2">
-				<a href="/image-resizer"><button class="btn btn-primary">Resize Image</button></a>
-				<a href="/audio-compresser"><button class="btn btn-primary">Compress Audio</button></a>
+				<a href="/image/resize"><button class="btn btn-primary">Resize Image</button></a>
+				<a href="/audio/compress"><button class="btn btn-primary">Compress Audio</button></a>
 			</div>
 		</div>
 	</div>
