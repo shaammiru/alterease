@@ -119,7 +119,7 @@
 			{/if}
 		{:else}
 			<div class="p-2">
-				<a href={audioUrl} download>
+				<a href={audioUrl} target="_blank">
 					<button class="btn btn-wide btn-success">Download</button>
 				</a>
 			</div>

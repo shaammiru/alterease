@@ -107,7 +107,7 @@
 			{/if}
 		{:else}
 			<div class="p-2">
-				<a href={imageUrl} download>
+				<a href={imageUrl} target="_blank">
 					<button class="btn btn-wide btn-success">Download</button>
 				</a>
 			</div>
