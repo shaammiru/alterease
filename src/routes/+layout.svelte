@@ -26,6 +26,7 @@
 				<li><a href="/image/rotate">Image Rotate</a></li>
 				<li><a href="/image/flip">Image Flip</a></li>
 				<li><a href="/audio/compress">Audio Compress</a></li>
+				<li><a href="/video/compress">Video Compress</a></li>
 			</ul>
 		</div>
 	</div>

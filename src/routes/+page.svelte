@@ -11,7 +11,10 @@
 					<a href="/image/rotate"><button class="btn btn-primary">Rotate Image</button></a>
 					<a href="/image/flip"><button class="btn btn-primary">Flip Image</button></a>
 				</div>
-				<a href="/audio/compress"><button class="btn btn-primary">Compress Audio</button></a>
+				<div class="mb-4 space-x-2">
+					<a href="/audio/compress"><button class="btn btn-primary">Compress Audio</button></a>
+					<a href="/video/compress"><button class="btn btn-primary">Compress Video</button></a>
+				</div>
 			</div>
 		</div>
 	</div>
