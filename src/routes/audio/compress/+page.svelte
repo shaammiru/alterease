@@ -1,6 +1,7 @@
 <script>
 	import { PUBLIC_API_URL } from '$env/static/public';
 
+	const MAX_FILE_SIZE = 15 * 1024 * 1024;
 	let fileSelected = false;
 	let loading = false;
 	let isError = false;
@@ -10,6 +11,18 @@
 
 	const handleFileChange = (event) => {
 		fileSelected = event.target.files.length > 0;
+		if (fileSelected) {
+			const file = event.target.files[0];
+			if (file.size > MAX_FILE_SIZE) {
+				alert('File size exceeds the limit of 15MB.');
+				event.target.value = '';
+				fileSelected = false;
+			} else {
+				fileSelected = true;
+			}
+		} else {
+			fileSelected = false;
+		}
 	};
 
 	const handleCompress = async () => {
@@ -69,6 +82,11 @@
 			class="file-input file-input-bordered w-full max-w-xs"
 			on:change={handleFileChange}
 		/>
+		<h2 class="text-md mt-4 font-bold text-red-300">Limit 15 MB</h2>
+		<h2 class="font-bold">
+			*Dikarenakan resource server kecil (gratisan 😭), file besar akan lambat diunggah dan
+			diproses.
+		</h2>
 	</div>
 
 	<div class="p-4">
